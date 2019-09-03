@@ -1,0 +1,416 @@
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+\usepackage{fancyhdr}           % For header and footer
+\usepackage{multicol}           % Allows multicols in tables
+\usepackage{tabularx}           % Intelligent column widths
+\usepackage{tabulary}           % Used in header and footer
+\usepackage{hhline}             % Border under tables
+\usepackage{graphicx}           % For images
+\usepackage{xcolor}             % For hex colours
+%\usepackage[utf8x]{inputenc}    % For unicode character support
+\usepackage[T1]{fontenc}        % Without this we get weird character replacements
+\usepackage{colortbl}           % For coloured tables
+\usepackage{setspace}           % For line height
+\usepackage{lastpage}           % Needed for total page number
+\usepackage{seqsplit}           % Splits long words.
+%\usepackage{opensans}          % Can't make this work so far. Shame. Would be lovely.
+\usepackage[normalem]{ulem}     % For underlining links
+% Most of the following are not required for the majority
+% of cheat sheets but are needed for some symbol support.
+\usepackage{amsmath}            % Symbols
+\usepackage{MnSymbol}           % Symbols
+\usepackage{wasysym}            % Symbols
+%\usepackage[english,german,french,spanish,italian]{babel}              % Languages
+
+% Document Info
+\author{mutanclan (mutanclan)}
+\pdfinfo{
+  /Title (tmux-shortcuts.pdf)
+  /Creator (Cheatography)
+  /Author (mutanclan (mutanclan))
+  /Subject (tmux shortcuts Cheat Sheet)
+}
+
+% Lengths and widths
+\addtolength{\textwidth}{6cm}
+\addtolength{\textheight}{-1cm}
+\addtolength{\hoffset}{-3cm}
+\addtolength{\voffset}{-2cm}
+\setlength{\tabcolsep}{0.2cm} % Space between columns
+\setlength{\headsep}{-12pt} % Reduce space between header and content
+\setlength{\headheight}{85pt} % If less, LaTeX automatically increases it
+\renewcommand{\footrulewidth}{0pt} % Remove footer line
+\renewcommand{\headrulewidth}{0pt} % Remove header line
+\renewcommand{\seqinsert}{\ifmmode\allowbreak\else\-\fi} % Hyphens in seqsplit
+% This two commands together give roughly
+% the right line height in the tables
+\renewcommand{\arraystretch}{1.3}
+\onehalfspacing
+
+% Commands
+\newcommand{\SetRowColor}[1]{\noalign{\gdef\RowColorName{#1}}\rowcolor{\RowColorName}} % Shortcut for row colour
+\newcommand{\mymulticolumn}[3]{\multicolumn{#1}{>{\columncolor{\RowColorName}}#2}{#3}} % For coloured multi-cols
+\newcolumntype{x}[1]{>{\raggedright}p{#1}} % New column types for ragged-right paragraph columns
+\newcommand{\tn}{\tabularnewline} % Required as custom column type in use
+
+% Font and Colours
+\definecolor{HeadBackground}{HTML}{333333}
+\definecolor{FootBackground}{HTML}{666666}
+\definecolor{TextColor}{HTML}{333333}
+\definecolor{DarkBackground}{HTML}{07A316}
+\definecolor{LightBackground}{HTML}{D4EFD7}
+\renewcommand{\familydefault}{\sfdefault}
+\color{TextColor}
+
+% Header and Footer
+\pagestyle{fancy}
+\fancyhead{} % Set header to blank
+\fancyfoot{} % Set footer to blank
+\fancyhead[L]{
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{C}
+    \SetRowColor{DarkBackground}
+    \vspace{-7pt}
+    {\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\noindent
+        \hspace*{-6pt}\includegraphics[width=5.8cm]{/web/www.cheatography.com/public/images/cheatography_logo.pdf}}
+    }
+\end{tabulary}
+\columnbreak
+\begin{tabulary}{11cm}{L}
+    \vspace{-2pt}\large{\bf{\textcolor{DarkBackground}{\textrm{tmux shortcuts Cheat Sheet}}}} \\
+    \normalsize{by \textcolor{DarkBackground}{mutanclan (mutanclan)} via \textcolor{DarkBackground}{\uline{cheatography.com/79625/cs/19318/}}}
+\end{tabulary}
+\end{multicols}}
+
+\fancyfoot[L]{ \footnotesize
+\noindent
+\begin{multicols}{3}
+\begin{tabulary}{5.8cm}{LL}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{2}{p{5.377cm}}{\bf\textcolor{white}{Cheatographer}}  \\
+  \vspace{-2pt}mutanclan (mutanclan) \\
+  \uline{cheatography.com/mutanclan} \\
+  \end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Cheat Sheet}}  \\
+   \vspace{-2pt}Published 9th April, 2019.\\
+   Updated 9th April, 2019.\\
+   Page {\thepage} of \pageref{LastPage}.
+\end{tabulary}
+\vfill
+\columnbreak
+\begin{tabulary}{5.8cm}{L}
+  \SetRowColor{FootBackground}
+  \mymulticolumn{1}{p{5.377cm}}{\bf\textcolor{white}{Sponsor}}  \\
+  \SetRowColor{white}
+  \vspace{-5pt}
+  %\includegraphics[width=48px,height=48px]{dave.jpeg}
+  Measure your website readability!\\
+  www.readability-score.com
+\end{tabulary}
+\end{multicols}}
+
+
+
+
+\begin{document}
+\raggedright
+\raggedcolumns
+
+% Set font size to small. Switch to any value
+% from this page to resize cheat sheet text:
+% www.emerson.emory.edu/services/latex/latex_169.html
+\footnotesize % Small font.
+
+\begin{multicols*}{3}
+
+\begin{tabularx}{5.377cm}{p{2.4885 cm} p{2.4885 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{prefix}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+CTRL-a & prefix \tn 
+% Row Count 1 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} x{4.4793 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Buffers}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+\# & list buffers \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+= & choose buffer \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+{]} & paste buffer \tn 
+% Row Count 3 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{1.19448 cm} x{3.78252 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{tmux-resurrect}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+CTRL-s & Save session \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+CTRL-r & Reload last session \tn 
+% Row Count 2 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} x{4.4793 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Miscelleanous}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+X & confirm before killing session \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+R & reload tmux configuration \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+? & list keys \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+t & show clock \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+: & enter command mode \tn 
+% Row Count 5 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.4977 cm} x{4.4793 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{window actions}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+c & create new window \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+, & rename window \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+0-9 & select window 0-9 \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+w & choose window interactively \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+f & prompt for search in current window \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+| & split window vertically {\emph{mod}} \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+- & split window horizontally {\emph{mod}} \tn 
+% Row Count 7 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{{\emph{mod}} means these shortcuts are modified in tmux.conf}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{1.04517 cm} x{3.93183 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{navigate panes and windows vim-like}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+h & select left pane \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+j & select down pane \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+k & select upper pane \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+l & select right pane \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+CTRL-h & select previous window \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+CTRL-l & select next window \tn 
+% Row Count 6 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Customized shortcuts}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{2.09034 cm} x{2.88666 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{pane actions}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+CTRL-o & rotate panes forwards \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+ALT-o & rotate panes backwards \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+! & break the current pane out of the window \tn 
+% Row Count 4 (+ 2)
+% Row 3
+\SetRowColor{white}
+; & move to the previously active pane \tn 
+% Row Count 6 (+ 2)
+% Row 4
+\SetRowColor{LightBackground}
+o & select next pane \tn 
+% Row Count 7 (+ 1)
+% Row 5
+\SetRowColor{white}
+q & display pane indexes \tn 
+% Row Count 8 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+m & mark current pane \tn 
+% Row Count 9 (+ 1)
+% Row 7
+\SetRowColor{white}
+M & clear the marked pane \tn 
+% Row Count 10 (+ 1)
+% Row 8
+\SetRowColor{LightBackground}
+x & kill current pane \tn 
+% Row Count 11 (+ 1)
+% Row 9
+\SetRowColor{white}
+\{ & swap pane with the previous pane \tn 
+% Row Count 13 (+ 2)
+% Row 10
+\SetRowColor{LightBackground}
+\} & swap pane with the next pane \tn 
+% Row Count 15 (+ 2)
+% Row 11
+\SetRowColor{white}
+\{\{nobreak\}\}ALT-1 {\bf{to}} ALT-5 & arrange panes in preset layout \tn 
+% Row Count 17 (+ 2)
+% Row 12
+\SetRowColor{LightBackground}
+\{\{nobreak\}\}CTRL-Arrow & Resize pane in arrow direction by 1 \tn 
+% Row Count 19 (+ 2)
+% Row 13
+\SetRowColor{white}
+z & toggle zoom \tn 
+% Row Count 20 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{p{0.84609 cm} x{4.13091 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{Copy mode vi}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+{[} & enter copy mode \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+q & quit copy mode \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+Space & begin selection \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+Enter & copy selection and cancel \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+V & select line \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+W & next space \tn 
+% Row Count 6 (+ 1)
+% Row 6
+\SetRowColor{LightBackground}
+v & rectangle toggle \tn 
+% Row Count 7 (+ 1)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\SetRowColor{LightBackground}
+\mymulticolumn{2}{x{5.377cm}}{Mainly works like selecting text in vi}  \tn 
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+\begin{tabularx}{5.377cm}{x{1.59264 cm} x{3.38436 cm} }
+\SetRowColor{DarkBackground}
+\mymulticolumn{2}{x{5.377cm}}{\bf\textcolor{white}{client}}  \tn
+% Row 0
+\SetRowColor{LightBackground}
+( & switch to previous client \tn 
+% Row Count 1 (+ 1)
+% Row 1
+\SetRowColor{white}
+) & switch to next client \tn 
+% Row Count 2 (+ 1)
+% Row 2
+\SetRowColor{LightBackground}
+CTRL-z & suspend client \tn 
+% Row Count 3 (+ 1)
+% Row 3
+\SetRowColor{white}
+d & detach client \tn 
+% Row Count 4 (+ 1)
+% Row 4
+\SetRowColor{LightBackground}
+r & refresh client \tn 
+% Row Count 5 (+ 1)
+% Row 5
+\SetRowColor{white}
+\seqsplit{choose-client} & open a pane into client mode \tn 
+% Row Count 7 (+ 2)
+% Row 6
+\SetRowColor{LightBackground}
+s & open a pane to show sessions \tn 
+% Row Count 9 (+ 2)
+\hhline{>{\arrayrulecolor{DarkBackground}}--}
+\end{tabularx}
+\par\addvspace{1.3em}
+
+
+% That's all folks
+\end{multicols*}
+
+\end{document}
